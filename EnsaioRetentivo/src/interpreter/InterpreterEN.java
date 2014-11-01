@@ -9,6 +9,10 @@ package interpreter;
  *
  * @author Marcos
  */
-public interface Interprete {
-    public String interpretar(String comando);
+class InterpreterEN extends Interpreter {
+
+    public InterpreterEN() {
+        super("\\game\\commands\\commands_en.json");        
+    }
+    
 }

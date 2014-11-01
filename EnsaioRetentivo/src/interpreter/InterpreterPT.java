@@ -11,6 +11,6 @@ package interpreter;
  */
 public final class InterpreterPT extends Interpreter {
     InterpreterPT(){
-        super("\\game\\commands\\commands_pt.json");        
+        super("\\game\\commands\\commands_pt.json", "Comando não reconhecido. Você quis dizer ");
     }
 }
