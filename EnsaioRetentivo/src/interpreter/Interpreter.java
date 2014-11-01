@@ -50,7 +50,9 @@ public abstract class Interpreter implements Interprete {
     }
 
     private void initializeJSON() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //DEBUG MODE
+        //Acessível apenas para programadores inserirem comandos no jogo.
+        
     }
 
     @Override
@@ -77,6 +79,9 @@ public abstract class Interpreter implements Interprete {
         }
         if (commandIndex >= 0){
             //Comando não executado
+            /**
+             * @TODO Adicionar respostas inusitadas
+             */
             retorno = errorMsg + commands.get(commandIndex).toString() + "?";
         }
         return null;

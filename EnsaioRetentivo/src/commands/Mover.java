@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interpreter;
+package commands;
 
 /**
  *
  * @author Marcos
  */
-class InterpreterEN extends Interpreter {
+public class Mover implements Command{
 
-    public InterpreterEN() {
-        super("\\game\\commands\\commands_en.json", "Command not recognized. Did you mean ");        
+    @Override
+    public void execute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

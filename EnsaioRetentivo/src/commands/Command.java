@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interpreter;
+package commands;
 
 /**
  *
  * @author Marcos
  */
-class InterpreterEN extends Interpreter {
-
-    public InterpreterEN() {
-        super("\\game\\commands\\commands_en.json", "Command not recognized. Did you mean ");        
-    }
-    
+public interface Command {
+    public void execute();
 }
