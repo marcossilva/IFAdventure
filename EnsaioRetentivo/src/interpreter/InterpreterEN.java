@@ -12,7 +12,12 @@ package interpreter;
 class InterpreterEN extends Interpreter {
 
     public InterpreterEN() {
-        super("\\game\\commands\\commands_en.json", "Command not recognized. Did you mean ");        
+        super("commands_en.json", "Command not recognized. Did you mean ");        
+    }
+
+    @Override
+    protected void initializeJSON() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

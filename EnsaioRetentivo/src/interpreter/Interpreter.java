@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
@@ -22,9 +24,9 @@ import org.json.JSONObject;
 public abstract class Interpreter implements Interprete {
 
     private static Interprete interpreter;
-    private JSONObject g;
-    private JSONArray commands;
-    private File json;
+    JSONObject g;
+    File json;
+    private File dir = new File(System.getProperty("user.dir") + "\\game\\commands\\");
     private Scanner in;
     /**
      * * @TODO melhor maneira de deixar mensagem de erro genérica?
@@ -34,7 +36,7 @@ public abstract class Interpreter implements Interprete {
     protected Interpreter(String fileDir, String errorMsg) {
         this.errorMsg = errorMsg;
         //Lê os comandos pré-definidos de um arquivo JSON
-        json = new File(System.getProperty("user.dir") + fileDir);
+        json = new File(dir, fileDir);
         if (!json.exists()) {
             //entrar em modo de debug e inserir comandos do jogo no arquivo
             initializeJSON();
@@ -48,9 +50,9 @@ public abstract class Interpreter implements Interprete {
                     arq.append(in.nextLine());
                     arq.append("\n");
                 }
+                in.close();
                 //pq colocar um JSONObject se o arquivo de comandos é certamente um único array?
                 g = new JSONObject(arq.toString());
-                commands = g.getJSONArray("commands");
             } catch (FileNotFoundException ex) {
                 //Nunca acontece pois o arquivo é criado com certeza nas linhas acima
                 System.out.println("Arquivo não encontrado :(");
@@ -58,72 +60,41 @@ public abstract class Interpreter implements Interprete {
         }
     }
 
-    private void initializeJSON() {
-        //DEBUG MODE
-        //Acessível apenas para programadores inserirem comandos no jogo.
-        System.out.println("Entrar no modo debug!");
-        try {
-            json.createNewFile();
-            g = new JSONObject();
-            commands = new JSONArray();
-            commands.put(new JSONObject().put("ver", "observar"));
-            commands.put(new JSONObject().put("observar", "observar"));
-            commands.put(new JSONObject().put("descrever", "observar"));
-            commands.put(new JSONObject().put("analisar", "observar"));
-            commands.put(new JSONObject().put("subir", "movimento"));
-            commands.put(new JSONObject().put("descer", "movimento"));
-            commands.put(new JSONObject().put("ir", "movimento"));
-            commands.put(new JSONObject().put("andar", "movimento"));
-            commands.put(new JSONObject().put("inventorio", "inventorio"));
-            commands.put(new JSONObject().put("inventório", "inventorio"));
-            commands.put(new JSONObject().put("usar", "inventorio"));
-            commands.put(new JSONObject().put("descartar", "inventorio"));
-            g.put("commands", commands);
-            FileWriter writer = new FileWriter(json);
-            writer.write(g.toString());
-            System.out.println(g.toString());
-        } catch (IOException ex) {
-            System.err.println("Can't write to directory.");
-        }
-    }
+    protected abstract void initializeJSON();
 
     @Override
     public String interpretar(String comando) {
-        if (commands == null) {
-            try {
-                throw new Exception("Inicialize o arquivo de comandos pfvr, obg.");
-            } catch (Exception ex) {
-                Logger.getLogger(Interpreter.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        double hashInput = comando.hashCode();
-        double hashRead = 0;
-        double closestHashRead = 0;
-
-        int commandIndex = 0;
-
-        String retorno = "";
-        for (int i = 0; i < commands.length(); i++) {
-            hashRead = commands.get(i).toString().hashCode();
-            commandIndex = i;
+        String comand = comando.split(" ")[0];
+        String closestCommand = null;
+        int hashInput = comand.hashCode();
+        int hashRead = 0;
+        int closestHashRead = Integer.MAX_VALUE;
+        for (String key : g.keySet()) {
+            hashRead = key.hashCode();
+            /*System.out.println("Comando lido = " + comand);
+             System.out.println("Hash desse comando = " + hashInput);
+             System.out.println("Comando reconhecido = " + key);
+             System.out.println("Hash desse comando = " + hashRead);*/
             if (hashRead == hashInput) {
-                //sai do loop
+                //sai do loop                
+                closestHashRead = 0;
                 break;
             }
             //Procura o comando mais próximo ao digitado pelo usuário pelo hash do String digitado
             if (Math.min(closestHashRead, Math.abs(hashRead - hashInput)) != closestHashRead) {
                 closestHashRead = Math.min(closestHashRead, Math.abs(hashRead - hashInput));
+                closestCommand = key;
             }
         }
         if (closestHashRead == 0) { //O comando achado é o comando digitado
-            System.out.println("O comando digitado foi " + commands.get(commandIndex).toString());
-        }
-        if (commandIndex < 0) {
+            System.out.println("O comando digitado foi " + comand + " e é do tipo " + g.get(comand));
+        } else {
             //Comando não executado
             /**
-             * @TODO Adicionar respostas inusitadas
+             * @todo Adicionar respostas inusitadas
              */
-            retorno = errorMsg + commands.get(commandIndex).toString() + "?";
+            /*System.out.println(errorMsg + closestCommand + "?");*/
+            System.out.println("O comando digitado foi " + comand + " e não foi reconhecido. Você quis dizer " + closestCommand + "?");
         }
         return null;
     }
