@@ -9,15 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
  *
  * @author Marcos
  */
-public final class InterpreterPT extends Interpreter {
-    InterpreterPT(){
+public class InterpreterPT extends Interpreter {
+    public InterpreterPT(){
         super("commands_pt.json", "Comando não reconhecido. Você quis dizer ");
     }
 
