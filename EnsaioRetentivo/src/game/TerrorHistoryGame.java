@@ -1,6 +1,6 @@
 package game;
 
-import factory.JSONFactory;
+import factory.TerrorHistoryJSONFactory;
 import interpreter.*;
 import player.PlayerWithoutHP;
 import printer.*;
