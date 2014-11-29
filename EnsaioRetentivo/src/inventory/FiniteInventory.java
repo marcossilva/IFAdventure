@@ -24,7 +24,7 @@ public class FiniteInventory extends Inventory {
     }
 
     @Override
-    public boolean add(Item i) {
+    public <T extends Item> boolean add(T i) {
         if (capacity > (i.getWeight() + c.size())) {
             capacity -= i.getWeight();
             return c.add(i);
@@ -34,11 +34,11 @@ public class FiniteInventory extends Inventory {
     }
     
     @Override
-    public boolean remove(Item i){
+    public <T extends Item> boolean remove(T i){
         if (c.remove(i)){
             capacity += i.getWeight();
         }
         return false;
-    }
+    }    
 
 }

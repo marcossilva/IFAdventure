@@ -1,9 +1,9 @@
 package game;
 
-import factory.TerrorHistoryJSONFactory;
+import io.printer.Printer;
+import io.printer.ConsolePrinter;
 import interpreter.*;
 import player.PlayerWithoutHP;
-import printer.*;
 
 /**
  *
@@ -22,6 +22,7 @@ public class TerrorHistoryGame extends Game{
     }
 
     @Override
-    public void start() {        
+    protected boolean fimDeJogo(){
+        return (room.getNUM_SALA() == 3) && (player.getInventory().search("galao"));
     }
 }

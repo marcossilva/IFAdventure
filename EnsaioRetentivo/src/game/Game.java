@@ -1,9 +1,11 @@
 package game;
 
-
 import interpreter.Interpreter;
+import io.input.Input;
 import player.Player;
-import printer.Printer;
+import io.printer.Printer;
+import player.PlayerWithHP;
+import world.WorldPiece;
 
 /**
  *
@@ -11,12 +13,29 @@ import printer.Printer;
  * @time 1:29:00 PM
  */
 public abstract class Game {
+
     private Printer p;
-    private Interpreter in;
+    private Interpreter interpret;
+    private Input in;
     Player player;
-    Game (Printer p, Interpreter in){
+    WorldPiece room;
+    private boolean endGame = false;
+
+    Game(Printer p, Interpreter in) {
         this.p = p;
-        this.in = in;
+        this.interpret = in;
+        player = new PlayerWithHP(20);
+        room = new WorldPiece(0);
     }
-    public abstract void start();
+
+    public void start() {
+        while (fimDeJogo()) { //hook
+            p.print(room.getDESCRIPTION());
+            interpret.interpretar(in.getInput());
+        }
+    }
+
+    protected boolean fimDeJogo() {
+        return false;
+    }
 }

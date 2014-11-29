@@ -19,13 +19,13 @@ public class InifiniteInventory extends Inventory {
         super(new ArrayList<Item>());
     }
     @Override
-    public boolean add(Item i) {
+    public <T extends Item> boolean add(T i) {
         return this.c.add(i);
     }
 
     @Override
     public <T extends Item> boolean remove(T c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.c.remove(c);
     }
     
 

@@ -13,9 +13,12 @@ import java.util.Scanner;
  * @author Marcos
  */
 public abstract class Input {
-    public Scanner in;
+    private Scanner in;
     public Input(InputStream stream) {
         in = new Scanner(stream);
+    }
+    public String getInput(){
+        return this.in.nextLine();
     }
     
 }

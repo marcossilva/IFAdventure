@@ -9,7 +9,8 @@ import java.io.PrintStream;
  */
 public class ConsolePrinter implements Printer{
     private PrintStream s = System.out;
-
+//System.out.println((char)27 +"[41m testing bold");
+//http://stackoverflow.com/questions/5062458/font-settings-for-strings-in-java
     @Override
     public void print(String message) {
         s.println(message);
