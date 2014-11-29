@@ -2,6 +2,7 @@ package game;
 
 import factory.JSONFactory;
 import interpreter.*;
+import player.PlayerWithoutHP;
 import printer.*;
 
 /**
@@ -16,6 +17,8 @@ public class TerrorHistoryGame extends Game{
     
     public TerrorHistoryGame() {
         super(new ConsolePrinter(), new InterpreterPT());
+        //Inicializar fábrica de comandos
+        player = new PlayerWithoutHP();        
     }
 
     @Override

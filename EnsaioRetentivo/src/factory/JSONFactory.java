@@ -1,5 +1,7 @@
 package factory;
 
+import org.json.JSONObject;
+
 /**
  *
  * @author marcos
@@ -13,6 +15,14 @@ public class JSONFactory {
         if (instance == null){
             instance = new JSONFactory();
         }
+        return instance;
+    }
+    
+    public static JSONObject getInstance(int num){
+        if (instance == null){
+            instance = new JSONFactory();
+        }
+        
         return instance;
     }
 
