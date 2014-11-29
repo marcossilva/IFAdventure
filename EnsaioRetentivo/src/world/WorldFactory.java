@@ -12,11 +12,12 @@ import org.json.JSONObject;
 public class WorldFactory {   
     private WorldFactory(){}
     private int num;
+    
     public WorldFactory(int num){
         this.num = num;
     }
     static String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     static int[] getWays() {

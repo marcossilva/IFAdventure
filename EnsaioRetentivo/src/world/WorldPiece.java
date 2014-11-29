@@ -13,7 +13,7 @@ public class WorldPiece {
     private final int[] WAYS;
     private final int NUM_SALA;
     
-    public WorldPiece(int numSala){        
+    public WorldPiece(int numSala){
         this.NUM_SALA = numSala;
         this.DESCRIPTION = WorldFactory.getDescription();
         this.WAYS = WorldFactory.getWays();

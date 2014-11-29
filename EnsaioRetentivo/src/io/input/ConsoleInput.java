@@ -13,7 +13,7 @@ import java.io.InputStream;
  */
 public class ConsoleInput extends Input{
 
-    public ConsoleInput(InputStream stream) {
+    public ConsoleInput() {
         super(System.in);
     }
     

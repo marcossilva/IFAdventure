@@ -14,25 +14,26 @@ import world.WorldPiece;
  */
 public abstract class Game {
 
-    private Printer p;
-    private Interpreter interpret;
-    private Input in;
+    private final Printer p;
+    private final Interpreter interpret;
+    private final Input in;
     Player player;
     WorldPiece room;
-    private boolean endGame = false;
 
-    Game(Printer p, Interpreter in) {
+    Game(Printer p, Interpreter interpreter, Input in) {
         this.p = p;
-        this.interpret = in;
+        this.interpret = interpreter;
+        this.in = in;
         player = new PlayerWithHP(20);
         room = new WorldPiece(0);
     }
 
     public void start() {
+        //TODO: menu de jogo
         while (fimDeJogo()) { //hook
             p.print(room.getDESCRIPTION());
             interpret.interpretar(in.getInput());
-        }
+        }        
     }
 
     protected boolean fimDeJogo() {
