@@ -11,8 +11,10 @@ package framework.commands;
  */
 public class Descricao implements Command{
 
+    
+
     @Override
-    public void execute() {
+    public void execute(String input) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
