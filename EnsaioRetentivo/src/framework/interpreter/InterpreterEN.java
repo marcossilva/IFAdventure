@@ -5,7 +5,9 @@
  */
 package framework.interpreter;
 
+import framework.game.Game;
 import framework.io.input.Input;
+import framework.io.printer.Printer;
 
 /**
  *
@@ -13,9 +15,7 @@ import framework.io.input.Input;
  */
 class InterpreterEN extends Interpreter {
 
-    public InterpreterEN(Input in) {
-        super(in);
+    public InterpreterEN(Game g) {
+        super(g);
     }
-
-   
 }

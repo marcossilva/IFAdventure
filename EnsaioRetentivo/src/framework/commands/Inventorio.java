@@ -14,7 +14,7 @@ public class Inventorio implements Command{
     
 
     @Override
-    public void execute(String input) {
+    public void execute(String command, String input){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -1,15 +1,17 @@
 package framework.interpreter;
 
+import framework.game.Game;
 import framework.io.input.Input;
+import framework.io.printer.Printer;
 
 /**
  *
  * @author Marcos
  */
-public class InterpreterPT extends Interpreter{    
+public class InterpreterPT extends Interpreter {
 
-    public InterpreterPT(Input in) {
-        super(in);
+    public InterpreterPT(Game g) {
+        super(g);
     }
-    
+
 }

@@ -5,7 +5,9 @@
  */
 package framework.interpreter;
 
+import framework.game.Game;
 import framework.io.input.Input;
+import framework.io.printer.Printer;
 
 /**
  *
@@ -16,14 +18,13 @@ public class InterpreterFactory {
     /** @TODO Faz sentido o Factory ser estático?*/
     /**
      * @param idioma
-     * @param in
      * @return  *  @TODO Exception joga string na exceção.*/
-    public static Interpreter getInterpreter(String idioma, Input in) {
+    public static Interpreter getInterpreter(String idioma, Game g) {
         if (idioma.toLowerCase().startsWith("pt") || idioma.toLowerCase().startsWith("br")) {
-            return new InterpreterPT(in);
+            return new InterpreterPT(g);
         }
         if (idioma.toLowerCase().startsWith("en")) {
-            return new InterpreterEN(in);
+            return new InterpreterEN(g);
         }
         throw new ExceptionInInitializerError("Problem with specified factory. Please check.");
     }

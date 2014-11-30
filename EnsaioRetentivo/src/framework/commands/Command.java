@@ -10,5 +10,5 @@ package framework.commands;
  * @author Marcos
  */
 public interface Command {
-    public void execute(String input);
+    public void execute(String command, String input);
 }

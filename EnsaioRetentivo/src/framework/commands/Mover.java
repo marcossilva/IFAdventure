@@ -12,7 +12,7 @@ package framework.commands;
 public class Mover implements Command{
 
     @Override
-    public void execute(String input) {
+    public void execute(String command, String input){
         
     }
     

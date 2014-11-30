@@ -9,13 +9,11 @@ package framework.commands;
  *
  * @author Marcos
  */
-public class Observar implements Command{
-
-    
+public class Observar implements Command {
 
     @Override
-    public void execute(String input) {
+    public void execute(String command, String input) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -15,15 +15,22 @@ import framework.world.WorldPiece;
  */
 public abstract class Game {
 
-    private final Printer p;
+    private static Printer p;
+
+    public static Input getInputStream() {
+        return in;
+    }
+    public static Printer getPrinterStream() {
+        return p;
+    }
     private final Interpreter interpret;
     protected Player player;
     protected WorldPiece room;
     private WorldPiece previousRoom;
-
-    protected Game(Printer p, String lang, Input in) {
-        this.p = p;
-        this.interpret = InterpreterFactory.getInterpreter(lang, in);
+    private static Input in;    
+    protected Game(Printer print, String lang, Input in) {
+        p = print;
+        this.interpret = InterpreterFactory.getInterpreter(lang, this);
         player = new PlayerWithHP(20);
         room = new WorldPiece(0);
     }

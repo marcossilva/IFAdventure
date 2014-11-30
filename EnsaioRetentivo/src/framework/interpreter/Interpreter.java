@@ -5,33 +5,35 @@
  */
 package framework.interpreter;
 
+import framework.commands.CommandFactory;
+import framework.game.Game;
 import framework.io.input.Input;
-import framework.org.json.JSONObject;
+import framework.io.printer.Printer;
 import myGame.JSONFactory;
 
 /**
  *
  * @author Marcos
  */
-public abstract class Interpreter{
-    private final Input in;
-    public Interpreter(Input in) {
-        this.in = in;
-    }        
+public abstract class Interpreter {
+    Game g;
+    public Interpreter(Game g) {
+        this.g = g;
+    }
+
     public String interpretar() {
-        String comando = in.getInput();
+        //<editor-fold defaultstate="collapsed" desc="Itera sobre todos os comandos e verifica se algum é igual ao digitado ou sugere o comando mais próximo">
+        String comando = Game.getInputStream().getInput();
         String comand = comando.split(" ")[0];
-        String closestCommand = null;
+        String closestCommand = "";
         int hashInput = comand.hashCode();
         int hashRead = 0;
         int closestHashRead = Integer.MAX_VALUE;
-        String comandoEncontrado="";
-        
-        
+        String comandoEncontrado = "";
         for (String key : JSONFactory.getCommands().keySet()) {
             hashRead = key.hashCode();
             if (hashRead == hashInput) {
-                //sai do loop                
+                //sai do loop
                 closestHashRead = 0;
                 comandoEncontrado = key;
                 break;
@@ -42,18 +44,11 @@ public abstract class Interpreter{
                 closestCommand = key;
             }
         }
+//</editor-fold>
         if (closestHashRead == 0) { //O comando achado é o comando digitado
-            
-            
-            System.out.println("O comando digitado foi " + comand + " e é do tipo " +comandoEncontrado );
-            //todo fabricaCommand
-        } else {
-            //Comando não executado
-            /**
-             * @todo Adicionar respostas inusitadas
-             */
-            /*System.out.println(errorMsg + closestCommand + "?");*/
-            System.out.println("O comando digitado foi " + comand + " e não foi reconhecido. Você quis dizer " + closestCommand + "?");
+            CommandFactory.getCommand(comandoEncontrado, comando);
+        } else { //Sugere o comando mais próximo
+            Game.getPrinterStream().print("O comando digitado foi " + comand + " e não foi reconhecido. Você quis dizer " + closestCommand + "?");
         }
         return null;
     }
