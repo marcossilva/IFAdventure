@@ -18,6 +18,7 @@ public abstract class Game {
     private final Interpreter interpret;
     Player player;
     WorldPiece room;
+    private WorldPiece previousRoom;
 
     Game(Printer p, String lang, Input in) {
         this.p = p;
@@ -29,12 +30,22 @@ public abstract class Game {
     public void start() {
         //TODO: menu de jogo
         while (fimDeJogo()) { //hook
-            if (mudouDeSala) p.print(room.getDESCRIPTION());
+            if (mudouDeSala()) p.print(room.getDESCRIPTION());
             interpret.interpretar();
         }        
     }
 
     protected boolean fimDeJogo() {
         return false;
+    }
+    
+    private boolean mudouDeSala() {
+        if(previousRoom!=room){
+            previousRoom=room;
+            
+        return true;    
+        }
+        return false;
+        
     }
 }
