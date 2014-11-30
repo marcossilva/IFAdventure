@@ -1,6 +1,6 @@
 
-import game.Game;
-import game.TerrorHistoryGame;
+import framework.game.Game;
+import myGame.TerrorHistoryGame;
 
 /**
  *
