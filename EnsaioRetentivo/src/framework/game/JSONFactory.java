@@ -1,6 +1,5 @@
-package myGame;
+package framework.game;
 
-import framework.game.JSONBackup;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -46,10 +45,10 @@ public class JSONFactory {
      * @return
      */
     public static JSONObject getWorldPiece(int num) {
-        return game.getJSONObject("sala" + num);
+        return game.getJSONObject("salas").getJSONObject("sala" + num);
     }
 
-    private JSONFactory(String gameName) {
+    protected JSONFactory(String gameName) {
         File json = new File(System.getProperty("user.dir") + File.separator + "game" + File.separator + gameName + ".json");
         if (json.exists()) {
             //<editor-fold defaultstate="collapsed" desc="Le o JSON e carrega em game">
@@ -65,12 +64,11 @@ public class JSONFactory {
             game = new JSONObject(temp.toString());
 //</editor-fold>
         } else {
-            System.out.println("Arquivo n existe");
             JSONFactory.criaJSON();
         }
     }
 
-    private static JSONFactory getInstance(String gameName) {
+    public static JSONFactory getInstance(String gameName) {
         if (instance == null) {
             JSONFactory.gameName = gameName;
             instance = new JSONFactory(gameName);
@@ -83,3 +81,4 @@ public class JSONFactory {
     }
 
 }
+

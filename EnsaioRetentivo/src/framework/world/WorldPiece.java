@@ -1,11 +1,11 @@
 package framework.world;
 
+import framework.game.JSONFactory;
 import framework.item.Item;
 import framework.org.json.JSONArray;
 import framework.org.json.JSONObject;
 import java.util.LinkedList;
 import java.util.List;
-import myGame.JSONFactory;
 
 /**
  *

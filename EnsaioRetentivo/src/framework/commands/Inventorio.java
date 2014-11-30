@@ -9,7 +9,11 @@ package framework.commands;
  *
  * @author Marcos
  */
-public class Inventorio implements Command{
+public class Inventorio extends Command{
+
+    Inventorio(String input) {
+        this.input = input;
+    }
 
     
 

@@ -11,23 +11,17 @@ package framework.commands;
  */
 public class CommandFactory {
 
-    public CommandFactory() {
-    }
-
-    public static Command getCommand(String comando) {
-        if (comando.equals("ajuda")) {
-            return new Ajuda();
-        } else if (comando.equals("observar")) {
-            return new Observar();
-        } else if (comando.equals("inventorio")) {
-            return new Inventorio();
-        } else if (comando.equals("movimento")){
-            return new Mover();
-        
+    public static Command getCommand(String comando, String input) {
+        switch (comando) {
+            case "ajuda":
+                return new Ajuda(input);
+            case "observar":
+                return new Observar(input);
+            case "inventorio":
+                return new Inventorio(input);
+            case "movimento":
+                return new Mover(input);        
         }
-        
         throw new Error("Erro na entrada do comando");
-
     }
-
 }

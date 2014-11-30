@@ -9,7 +9,11 @@ package framework.commands;
  *
  * @author Marcos
  */
-public class Mover implements Command{
+public class Mover extends Command{
+
+    Mover(String input) {
+        this.input = input;
+    }
 
     @Override
     public void execute(String command, String input){

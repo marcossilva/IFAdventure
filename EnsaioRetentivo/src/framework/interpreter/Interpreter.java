@@ -7,9 +7,8 @@ package framework.interpreter;
 
 import framework.commands.CommandFactory;
 import framework.game.Game;
-import framework.io.input.Input;
-import framework.io.printer.Printer;
-import myGame.JSONFactory;
+import framework.game.JSONFactory;
+
 
 /**
  *

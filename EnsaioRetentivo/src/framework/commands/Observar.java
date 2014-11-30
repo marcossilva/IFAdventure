@@ -9,7 +9,11 @@ package framework.commands;
  *
  * @author Marcos
  */
-public class Observar implements Command {
+public class Observar extends Command {
+
+    Observar(String input) {
+        this.input = input;
+    }
 
     @Override
     public void execute(String command, String input) {

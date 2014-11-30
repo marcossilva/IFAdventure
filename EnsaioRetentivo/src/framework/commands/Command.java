@@ -9,6 +9,7 @@ package framework.commands;
  *
  * @author Marcos
  */
-public interface Command {
-    public void execute(String command, String input);
+public abstract class Command {
+    String input;
+    public abstract void execute(String command, String input);
 }

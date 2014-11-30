@@ -16,20 +16,16 @@ import framework.world.WorldPiece;
 public abstract class Game {
 
     private static Printer p;
-
-    public static Input getInputStream() {
-        return in;
-    }
-    public static Printer getPrinterStream() {
-        return p;
-    }
     private final Interpreter interpret;
     protected Player player;
     protected WorldPiece room;
     private WorldPiece previousRoom;
-    private static Input in;    
-    protected Game(Printer print, String lang, Input in) {
+    private static Input in;
+    JSONFactory t;
+    protected Game(Printer print, String lang, Input input, JSONFactory myFac) {
+        t = myFac;
         p = print;
+        in = input;
         this.interpret = InterpreterFactory.getInterpreter(lang, this);
         player = new PlayerWithHP(20);
         room = new WorldPiece(0);
@@ -57,5 +53,13 @@ public abstract class Game {
         }
         return false;
 
+    }
+
+    public static Input getInputStream() {
+        return in;
+    }
+
+    public static Printer getPrinterStream() {
+        return p;
     }
 }
