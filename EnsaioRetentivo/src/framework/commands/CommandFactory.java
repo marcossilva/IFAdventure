@@ -5,6 +5,8 @@
  */
 package framework.commands;
 
+import framework.game.JSONFactory;
+
 /**
  *
  * @author Paulo
@@ -12,7 +14,7 @@ package framework.commands;
 public class CommandFactory {
 
     public static Command getCommand(String comando, String input) {
-        switch (comando) {
+        switch (JSONFactory.getCommands().getString(comando)) {
             case "ajuda":
                 return new Ajuda(input);
             case "observar":

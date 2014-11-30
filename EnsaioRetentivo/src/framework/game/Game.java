@@ -18,10 +18,11 @@ public abstract class Game {
     private static Printer p;
     private final Interpreter interpret;
     protected Player player;
-    protected WorldPiece room;
+    static WorldPiece room;
     private WorldPiece previousRoom;
     private static Input in;
     JSONFactory t;
+
     protected Game(Printer print, String lang, Input input, JSONFactory myFac) {
         t = myFac;
         p = print;
@@ -33,7 +34,7 @@ public abstract class Game {
 
     public void start() {
         //TODO: menu de jogo
-        while (fimDeJogo()) { //hook
+        while (!fimDeJogo()) { //hook
             if (mudouDeSala()) {
                 p.print(room.getDESCRIPTION());
             }
@@ -62,4 +63,13 @@ public abstract class Game {
     public static Printer getPrinterStream() {
         return p;
     }
+
+    public static boolean setRoom(WorldPiece r) {
+        room = r;
+        return true;
+    }
+
+    public static WorldPiece getRoom() {
+        return room;
+    }    
 }

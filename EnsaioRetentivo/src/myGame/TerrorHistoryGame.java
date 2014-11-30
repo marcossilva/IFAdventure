@@ -21,7 +21,7 @@ public class TerrorHistoryGame extends Game {
 
     @Override
     protected boolean fimDeJogo() {
-        return (room.getNUM_SALA() == 3) && (player.getInventory().search("galao"));
+        return (Game.getRoom().getNUM_SALA() == 3) && (player.getInventory().search("galao"));
     }
     public static void main(String[] args) {
         Game g = new TerrorHistoryGame(new ConsolePrinter(), "pt" , new ConsoleInput(), new TerrorHistoryJSONFactory());

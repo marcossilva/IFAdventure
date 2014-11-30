@@ -23,7 +23,7 @@ public class JSONFactory {
  */
     public static JSONObject getCommands() {
         if (commands == null) {
-            commands = game.getJSONObject("commands");
+            commands = game.getJSONObject("comandos");
         }
         return commands;
     }

@@ -51,7 +51,7 @@ public class WorldPiece {
 
     public List getITENS() {
         return ITENS;
-    }
+    }        
 
     public int[] getWAYS() {
         return WAYS;

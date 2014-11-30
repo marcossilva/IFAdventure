@@ -45,7 +45,7 @@ public abstract class Interpreter {
         }
 //</editor-fold>
         if (closestHashRead == 0) { //O comando achado é o comando digitado
-            CommandFactory.getCommand(comandoEncontrado, comando);
+            CommandFactory.getCommand(comandoEncontrado, comando).execute(comandoEncontrado, comando);
         } else { //Sugere o comando mais próximo
             Game.getPrinterStream().print("O comando digitado foi " + comand + " e não foi reconhecido. Você quis dizer " + closestCommand + "?");
         }

@@ -5,6 +5,13 @@
  */
 package framework.commands;
 
+import framework.game.Game;
+import framework.item.Item;
+import framework.world.WorldPiece;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Marcos
@@ -16,8 +23,27 @@ public class Observar extends Command {
     }
 
     @Override
-    public void execute(String command, String input) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void execute(String command, String input) {        
+        String objetoObservado = "";
+        try {
+            objetoObservado = input.split(" ")[1].toLowerCase();
+            List<Item> itens = Game.getRoom().getITENS();
+            boolean objetoEncontrado = false;
+            for (Item item : itens) {
+                if (item.getName().equals(objetoObservado)){
+                    //Observar um item coloca ele automaticamente no inventorio
+                    Game.getPrinterStream().print(item.getDescription());
+                    objetoEncontrado = true;
+                    break;
+                }
+            }
+            if (!objetoEncontrado){
+                Game.getPrinterStream().print("Objeto digitado não está na sala");
+            }
+        } catch (ArrayIndexOutOfBoundsException error) {
+            //Não há nada a se especificar, então imprime descricao da sala
+            Game.getPrinterStream().print(Game.getRoom().getDESCRIPTION());
+        }                        
     }
 
 }

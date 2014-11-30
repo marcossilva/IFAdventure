@@ -21,9 +21,11 @@ public class Ajuda extends Command {
     public void execute(String command, String input){
         JSONObject commands = JSONFactory.getCommands();
         Game.getPrinterStream().print("Os comandos disponíveis são:");
+        StringBuilder temp = new StringBuilder();
         for(String com : commands.keySet()){
-            Game.getPrinterStream().print(com);
+            temp.append(com).append("\t");
         }
+        Game.getPrinterStream().print(temp.toString());
     }
 
 }
