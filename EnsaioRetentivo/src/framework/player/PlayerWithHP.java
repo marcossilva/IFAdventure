@@ -1,5 +1,6 @@
 package framework.player;
 
+import framework.inventory.FiniteInventory;
 import framework.inventory.InifiniteInventory;
 /**
  *
@@ -11,7 +12,7 @@ public class PlayerWithHP extends Player {
     int hp;
 
     public PlayerWithHP(int health) {       
-        super(new InifiniteInventory());
+        super(new FiniteInventory(10));
         this.hp = health;        
     }
 

@@ -17,7 +17,7 @@ public abstract class Game {
 
     private static Printer p;
     private final Interpreter interpret;
-    protected Player player;
+    protected static Player player;
     static WorldPiece room;
     private WorldPiece previousRoom;
     private static Input in;
@@ -72,4 +72,9 @@ public abstract class Game {
     public static WorldPiece getRoom() {
         return room;
     }    
+
+    public static Player getPlayer() {
+        return player;
+    }
+    
 }

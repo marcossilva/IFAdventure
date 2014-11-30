@@ -28,7 +28,7 @@ public class Item {
         return weight;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 }

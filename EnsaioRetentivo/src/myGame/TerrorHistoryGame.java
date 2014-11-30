@@ -7,7 +7,6 @@ import framework.io.input.Input;
 import framework.io.printer.ConsolePrinter;
 import framework.io.printer.Printer;
 
-
 /**
  *
  * @author marcos
@@ -16,15 +15,20 @@ import framework.io.printer.Printer;
 public class TerrorHistoryGame extends Game {
 
     public TerrorHistoryGame(Printer p, String lang, Input i, JSONFactory fac) {
-        super(p, lang, i, fac);        
+        super(p, lang, i, fac);
     }
 
     @Override
     protected boolean fimDeJogo() {
-        return (Game.getRoom().getNUM_SALA() == 3) && (player.getInventory().search("galao"));
+        if ((Game.getRoom().getNUM_SALA() == 3) && (player.getInventory().search("galao"))) {
+            Game.getPrinterStream().print("Frase de efeito do final do jogo");
+            return true;
+        }
+        return false;
     }
+
     public static void main(String[] args) {
-        Game g = new TerrorHistoryGame(new ConsolePrinter(), "pt" , new ConsoleInput(), new TerrorHistoryJSONFactory());
+        Game g = new TerrorHistoryGame(new ConsolePrinter(), "pt", new ConsoleInput(), new TerrorHistoryJSONFactory());
         g.start();
     }
 }

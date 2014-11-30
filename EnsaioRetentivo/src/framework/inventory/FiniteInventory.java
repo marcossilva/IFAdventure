@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 public class FiniteInventory extends Inventory {
 
-    private int capacity;
+    
 
     public FiniteInventory(int capacity, Collection c) {
         super(c);
@@ -39,6 +39,6 @@ public class FiniteInventory extends Inventory {
             capacity += i.getWeight();
         }
         return false;
-    }    
+    }       
 
 }
