@@ -13,10 +13,9 @@ public final class JSONBackup {
     public final static String json = "{" +
 "	\"comandos\":" +
 "	{" +
-"		\"inventário\":[\"usar\", \"inventorio\", \"descartar\"]," +
+"		\"inventário\":[\"usar\", \"inventorio\", \"descartar\",\"pegar\"]," +
 "		\"movimento\":[\"ir\", \"andar\", \"descer\", \"subir\"]," +
 "		\"observar\":[\"analisar\", \"descrever\", \"observar\", \"ver\"]," +
-"		\"observarEadicionar\":[\"pegar\"]" +
 "	}," +
 "	\"itens\":" +
 "	{" +

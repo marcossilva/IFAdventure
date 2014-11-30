@@ -9,7 +9,7 @@ package framework.commands;
  *
  * @author Marcos
  */
-public class Descricao implements Command{
+public class Observar implements Command{
 
     
 

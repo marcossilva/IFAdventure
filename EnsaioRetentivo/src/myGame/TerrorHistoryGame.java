@@ -1,14 +1,9 @@
 package myGame;
 
-import framework.Interpreter;
 import framework.game.Game;
-import framework.io.printer.Printer;
-import framework.io.printer.ConsolePrinter;
-import framework.io.input.ConsoleInput;
 import framework.io.input.Input;
-import framework.player.PlayerWithHP;
-import framework.player.PlayerWithoutHP;
-import framework.world.WorldPiece;
+import framework.io.printer.Printer;
+
 
 /**
  *
@@ -17,13 +12,11 @@ import framework.world.WorldPiece;
  */
 public class TerrorHistoryGame extends Game {
 
-    public TerrorHistoryGame(Printer p, Interpreter in, Input i) {
-        super(p, in, i);
+    public TerrorHistoryGame(Printer p, String lang, Input i) {
+        super(p, lang, i);
+        
     }
 
-    public TerrorHistoryGame() {
-        super(new ConsolePrinter(), new InterpreterPT(), new ConsoleInput());
-    }
 
     @Override
     protected boolean fimDeJogo() {

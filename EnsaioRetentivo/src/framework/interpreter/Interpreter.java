@@ -25,16 +25,15 @@ public abstract class Interpreter{
         int hashInput = comand.hashCode();
         int hashRead = 0;
         int closestHashRead = Integer.MAX_VALUE;
-        JSONObject comandos = JSONFactory.getCommands();
-        for (String key : g.keySet()) {
+        String comandoEncontrado="";
+        
+        
+        for (String key : JSONFactory.getCommands().keySet()) {
             hashRead = key.hashCode();
-            /*System.out.println("Comando lido = " + comand);
-             System.out.println("Hash desse comando = " + hashInput);
-             System.out.println("Comando reconhecido = " + key);
-             System.out.println("Hash desse comando = " + hashRead);*/
             if (hashRead == hashInput) {
                 //sai do loop                
                 closestHashRead = 0;
+                comandoEncontrado = key;
                 break;
             }
             //Procura o comando mais próximo ao digitado pelo usuário pelo hash do String digitado
@@ -44,7 +43,10 @@ public abstract class Interpreter{
             }
         }
         if (closestHashRead == 0) { //O comando achado é o comando digitado
-            System.out.println("O comando digitado foi " + comand + " e é do tipo " + g.get(comand));
+            
+            
+            System.out.println("O comando digitado foi " + comand + " e é do tipo " +comandoEncontrado );
+            //todo fabricaCommand
         } else {
             //Comando não executado
             /**

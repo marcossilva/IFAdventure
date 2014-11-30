@@ -1,5 +1,7 @@
 package framework.player;
 
+import framework.inventory.*;
+
 /**
  *
  * @author marcos
